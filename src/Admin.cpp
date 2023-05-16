@@ -3,9 +3,9 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#include "alpha/Admin.hpp"
-#include "alpha/Exception.hpp"
-#include "alpha/RequestResult.hpp"
+#include "YD/Admin.hpp"
+#include "YD/Exception.hpp"
+#include "YD/RequestResult.hpp"
 
 #include "AdminImpl.hpp"
 
@@ -13,7 +13,7 @@
 
 namespace tl = thallium;
 
-namespace alpha {
+namespace YD {
 
 Admin::Admin() = default;
 

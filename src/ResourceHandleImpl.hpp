@@ -3,12 +3,12 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_RESOURCE_HANDLE_IMPL_H
-#define __ALPHA_RESOURCE_HANDLE_IMPL_H
+#ifndef __YD_RESOURCE_HANDLE_IMPL_H
+#define __YD_RESOURCE_HANDLE_IMPL_H
 
-#include <alpha/UUID.hpp>
+#include <YD/UUID.hpp>
 
-namespace alpha {
+namespace YD {
 
 class ResourceHandleImpl {
 

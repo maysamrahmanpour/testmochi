@@ -3,11 +3,11 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#include "alpha/Backend.hpp"
+#include "YD/Backend.hpp"
 
 namespace tl = thallium;
 
-namespace alpha {
+namespace YD {
 
 using json = nlohmann::json;
 

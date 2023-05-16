@@ -3,26 +3,26 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_ADMIN_HPP
-#define __ALPHA_ADMIN_HPP
+#ifndef __YD_ADMIN_HPP
+#define __YD_ADMIN_HPP
 
 #include <nlohmann/json.hpp>
 #include <thallium.hpp>
 #include <string>
 #include <memory>
-#include <alpha/Exception.hpp>
-#include <alpha/UUID.hpp>
+#include <YD/Exception.hpp>
+#include <YD/UUID.hpp>
 
-namespace alpha {
+namespace YD {
 
 namespace tl = thallium;
 
 class AdminImpl;
 
 /**
- * @brief Admin interface to a ALPHA service. Enables creating
+ * @brief Admin interface to a YD service. Enables creating
  * and destroying resources, and attaching and detaching them
- * from a provider. If ALPHA providers have set up a security
+ * from a provider. If YD providers have set up a security
  * token, operations from the Admin interface will need this
  * security token.
  */

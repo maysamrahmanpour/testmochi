@@ -3,12 +3,12 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_ADMIN_IMPL_H
-#define __ALPHA_ADMIN_IMPL_H
+#ifndef __YD_ADMIN_IMPL_H
+#define __YD_ADMIN_IMPL_H
 
 #include <thallium.hpp>
 
-namespace alpha {
+namespace YD {
 
 namespace tl = thallium;
 
@@ -24,10 +24,10 @@ class AdminImpl {
 
     AdminImpl(const tl::engine& engine)
     : m_engine(engine)
-    , m_create_resource(m_engine.define("alpha_create_resource"))
-    , m_open_resource(m_engine.define("alpha_open_resource"))
-    , m_close_resource(m_engine.define("alpha_close_resource"))
-    , m_destroy_resource(m_engine.define("alpha_destroy_resource"))
+    , m_create_resource(m_engine.define("YD_create_resource"))
+    , m_open_resource(m_engine.define("YD_open_resource"))
+    , m_close_resource(m_engine.define("YD_close_resource"))
+    , m_destroy_resource(m_engine.define("YD_destroy_resource"))
     {}
 
     AdminImpl(margo_instance_id mid)

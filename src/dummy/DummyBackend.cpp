@@ -6,7 +6,7 @@
 #include "DummyBackend.hpp"
 #include <iostream>
 
-ALPHA_REGISTER_BACKEND(dummy, DummyResource);
+YD_REGISTER_BACKEND(dummy, DummyResource);
 
 DummyResource::DummyResource(thallium::engine engine, const json& config)
 : m_engine(std::move(engine)),
@@ -22,25 +22,25 @@ std::string DummyResource::getConfig() const {
     return m_config.dump();
 }
 
-alpha::RequestResult<int32_t> DummyResource::computeSum(int32_t x, int32_t y) {
-    alpha::RequestResult<int32_t> result;
+YD::RequestResult<int32_t> DummyResource::computeSum(int32_t x, int32_t y) {
+    YD::RequestResult<int32_t> result;
     result.value() = x + y;
     return result;
 }
 
-alpha::RequestResult<bool> DummyResource::destroy() {
-    alpha::RequestResult<bool> result;
+YD::RequestResult<bool> DummyResource::destroy() {
+    YD::RequestResult<bool> result;
     result.value() = true;
     // or result.success() = true
     return result;
 }
 
-std::unique_ptr<alpha::Backend> DummyResource::create(const thallium::engine& engine, const json& config) {
+std::unique_ptr<YD::Backend> DummyResource::create(const thallium::engine& engine, const json& config) {
     (void)engine;
-    return std::unique_ptr<alpha::Backend>(new DummyResource(engine, config));
+    return std::unique_ptr<YD::Backend>(new DummyResource(engine, config));
 }
 
-std::unique_ptr<alpha::Backend> DummyResource::open(const thallium::engine& engine, const json& config) {
+std::unique_ptr<YD::Backend> DummyResource::open(const thallium::engine& engine, const json& config) {
     (void)engine;
-    return std::unique_ptr<alpha::Backend>(new DummyResource(engine, config));
+    return std::unique_ptr<YD::Backend>(new DummyResource(engine, config));
 }

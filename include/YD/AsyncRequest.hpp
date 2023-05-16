@@ -3,13 +3,13 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_ASYNC_REQUEST_HPP
-#define __ALPHA_ASYNC_REQUEST_HPP
+#ifndef __YD_ASYNC_REQUEST_HPP
+#define __YD_ASYNC_REQUEST_HPP
 
 #include <memory>
 #include <string>
 
-namespace alpha {
+namespace YD {
 
 class AsyncRequestImpl;
 class ResourceHandle;

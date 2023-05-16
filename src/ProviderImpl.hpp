@@ -3,11 +3,11 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_PROVIDER_IMPL_H
-#define __ALPHA_PROVIDER_IMPL_H
+#ifndef __YD_PROVIDER_IMPL_H
+#define __YD_PROVIDER_IMPL_H
 
-#include "alpha/Backend.hpp"
-#include "alpha/UUID.hpp"
+#include "YD/Backend.hpp"
+#include "YD/UUID.hpp"
 
 #include <thallium.hpp>
 #include <thallium/serialization/stl/string.hpp>
@@ -33,7 +33,7 @@
             __var__ = it->second;\
         }while(0)
 
-namespace alpha {
+namespace YD {
 
 using namespace std::string_literals;
 namespace tl = thallium;
@@ -66,13 +66,13 @@ class ProviderImpl : public tl::provider<ProviderImpl> {
     : tl::provider<ProviderImpl>(engine, provider_id)
     , m_engine(engine)
     , m_pool(pool)
-    , m_create_resource(define("alpha_create_resource", &ProviderImpl::createResourceRPC, pool))
-    , m_open_resource(define("alpha_open_resource", &ProviderImpl::openResourceRPC, pool))
-    , m_close_resource(define("alpha_close_resource", &ProviderImpl::closeResourceRPC, pool))
-    , m_destroy_resource(define("alpha_destroy_resource", &ProviderImpl::destroyResourceRPC, pool))
-    , m_check_resource(define("alpha_check_resource", &ProviderImpl::checkResourceRPC, pool))
-    , m_say_hello(define("alpha_say_hello", &ProviderImpl::sayHelloRPC, pool))
-    , m_compute_sum(define("alpha_compute_sum",  &ProviderImpl::computeSumRPC, pool))
+    , m_create_resource(define("YD_create_resource", &ProviderImpl::createResourceRPC, pool))
+    , m_open_resource(define("YD_open_resource", &ProviderImpl::openResourceRPC, pool))
+    , m_close_resource(define("YD_close_resource", &ProviderImpl::closeResourceRPC, pool))
+    , m_destroy_resource(define("YD_destroy_resource", &ProviderImpl::destroyResourceRPC, pool))
+    , m_check_resource(define("YD_check_resource", &ProviderImpl::checkResourceRPC, pool))
+    , m_say_hello(define("YD_say_hello", &ProviderImpl::sayHelloRPC, pool))
+    , m_compute_sum(define("YD_compute_sum",  &ProviderImpl::computeSumRPC, pool))
     {
         spdlog::trace("[provider:{0}] Registered provider with id {0}", id());
         json json_config;

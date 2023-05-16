@@ -5,22 +5,22 @@
  */
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/catch_all.hpp>
-#include <alpha/Client.hpp>
-#include <alpha/Provider.hpp>
-#include <alpha/Admin.hpp>
+#include <YD/Client.hpp>
+#include <YD/Provider.hpp>
+#include <YD/Admin.hpp>
 
 static const std::string resource_type = "dummy";
 static constexpr const char* resource_config = "{ \"path\" : \"mydb\" }";
 
 TEST_CASE("Resource test", "[resource]") {
     auto engine = thallium::engine("na+sm", THALLIUM_SERVER_MODE);
-    alpha::Admin admin(engine);
-    alpha::Provider provider(engine);
+    YD::Admin admin(engine);
+    YD::Provider provider(engine);
     std::string addr = engine.self();
     auto resource_id = admin.createResource(addr, 0, resource_type, resource_config);
 
     SECTION("Create ResourceHandle") {
-        alpha::Client client(engine);
+        YD::Client client(engine);
         std::string addr = engine.self();
 
         auto rh = client.makeResourceHandle(addr, 0, resource_id);
@@ -35,15 +35,15 @@ TEST_CASE("Resource test", "[resource]") {
 
             REQUIRE_NOTHROW(rh.computeSum(42, 51));
 
-            alpha::AsyncRequest request;
+            YD::AsyncRequest request;
             REQUIRE_NOTHROW(rh.computeSum(42, 52, &result, &request));
             REQUIRE_NOTHROW(request.wait());
             REQUIRE(result == 94);
         }
 
-        auto bad_id = alpha::UUID::generate();
+        auto bad_id = YD::UUID::generate();
         REQUIRE_THROWS_AS(client.makeResourceHandle(addr, 0, bad_id),
-                          alpha::Exception);
+                          YD::Exception);
 
         REQUIRE_THROWS_AS(client.makeResourceHandle(addr, 1, resource_id),
                          std::exception);

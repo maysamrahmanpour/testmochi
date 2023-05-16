@@ -3,18 +3,18 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_RESOURCE_HANDLE_HPP
-#define __ALPHA_RESOURCE_HANDLE_HPP
+#ifndef __YD_RESOURCE_HANDLE_HPP
+#define __YD_RESOURCE_HANDLE_HPP
 
 #include <thallium.hpp>
 #include <memory>
 #include <unordered_set>
 #include <nlohmann/json.hpp>
-#include <alpha/Client.hpp>
-#include <alpha/Exception.hpp>
-#include <alpha/AsyncRequest.hpp>
+#include <YD/Client.hpp>
+#include <YD/Exception.hpp>
+#include <YD/AsyncRequest.hpp>
 
-namespace alpha {
+namespace YD {
 
 namespace tl = thallium;
 

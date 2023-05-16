@@ -6,14 +6,14 @@
 #ifndef __DUMMY_BACKEND_HPP
 #define __DUMMY_BACKEND_HPP
 
-#include <alpha/Backend.hpp>
+#include <YD/Backend.hpp>
 
 using json = nlohmann::json;
 
 /**
- * Dummy implementation of an alpha Backend.
+ * Dummy implementation of an YD Backend.
  */
-class DummyResource : public alpha::Backend {
+class DummyResource : public YD::Backend {
 
     thallium::engine m_engine;
     json             m_config;
@@ -68,7 +68,7 @@ class DummyResource : public alpha::Backend {
      *
      * @return a RequestResult containing the result.
      */
-    alpha::RequestResult<int32_t> computeSum(int32_t x, int32_t y) override;
+    YD::RequestResult<int32_t> computeSum(int32_t x, int32_t y) override;
 
     /**
      * @brief Destroys the underlying resource.
@@ -76,7 +76,7 @@ class DummyResource : public alpha::Backend {
      * @return a RequestResult<bool> instance indicating
      * whether the database was successfully destroyed.
      */
-    alpha::RequestResult<bool> destroy() override;
+    YD::RequestResult<bool> destroy() override;
 
     /**
      * @brief Static factory function used by the ResourceFactory to
@@ -87,7 +87,7 @@ class DummyResource : public alpha::Backend {
      *
      * @return a unique_ptr to a resource
      */
-    static std::unique_ptr<alpha::Backend> create(const thallium::engine& engine, const json& config);
+    static std::unique_ptr<YD::Backend> create(const thallium::engine& engine, const json& config);
 
     /**
      * @brief Static factory function used by the ResourceFactory to
@@ -98,7 +98,7 @@ class DummyResource : public alpha::Backend {
      *
      * @return a unique_ptr to a resource
      */
-    static std::unique_ptr<alpha::Backend> open(const thallium::engine& engine, const json& config);
+    static std::unique_ptr<YD::Backend> open(const thallium::engine& engine, const json& config);
 };
 
 #endif

@@ -3,7 +3,7 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#include <alpha/Admin.hpp>
+#include <YD/Admin.hpp>
 #include <spdlog/spdlog.h>
 #include <tclap/CmdLine.h>
 #include <iostream>
@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     try {
 
         // Initialize an Admin
-        alpha::Admin admin(engine);
+        YD::Admin admin(engine);
 
         if(g_operation == "create") {
             auto id = admin.createResource(g_address, g_provider_id,
@@ -45,16 +45,16 @@ int main(int argc, char** argv) {
             spdlog::info("Opened resource {}", id.to_string());
         } else if(g_operation == "close") {
             admin.closeResource(g_address, g_provider_id,
-                alpha::UUID::from_string(g_resource.c_str()), g_token);
+                YD::UUID::from_string(g_resource.c_str()), g_token);
             spdlog::info("Closed resource {}", g_resource);
         } else if(g_operation == "destroy") {
             admin.destroyResource(g_address, g_provider_id,
-                alpha::UUID::from_string(g_resource.c_str()), g_token);
+                YD::UUID::from_string(g_resource.c_str()), g_token);
             spdlog::info("Destroyed resource {}", g_resource);
         }
 
-        // Any of the above functions may throw a alpha::Exception
-    } catch(const alpha::Exception& ex) {
+        // Any of the above functions may throw a YD::Exception
+    } catch(const YD::Exception& ex) {
         std::cerr << ex.what() << std::endl;
         exit(-1);
     }
@@ -64,12 +64,12 @@ int main(int argc, char** argv) {
 
 void parse_command_line(int argc, char** argv) {
     try {
-        TCLAP::CmdLine cmd("Alpha admin", ' ', "0.1");
+        TCLAP::CmdLine cmd("Yd admin", ' ', "0.1");
         TCLAP::ValueArg<std::string> addressArg("a","address","Address or server", true,"","string");
         TCLAP::ValueArg<unsigned>    providerArg("p", "provider", "Provider id to contact (default 0)", false, 0, "int");
         TCLAP::ValueArg<std::string> tokenArg("s","token","Security token", false,"","string");
         TCLAP::ValueArg<std::string> typeArg("t","type","Resource type", false,"dummy","string");
-        TCLAP::ValueArg<std::string> resourceArg("r","resource","Resource id", false, alpha::UUID().to_string(),"string");
+        TCLAP::ValueArg<std::string> resourceArg("r","resource","Resource id", false, YD::UUID().to_string(),"string");
         TCLAP::ValueArg<std::string> configArg("c","config","Resource configuration", false,"","string");
         TCLAP::ValueArg<std::string> logLevel("v","verbose", "Log level (trace, debug, info, warning, error, critical, off)", false, "info", "string");
         std::vector<std::string> options = { "create", "open", "close", "destroy" };

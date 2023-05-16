@@ -3,10 +3,10 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#include "alpha/Exception.hpp"
-#include "alpha/Client.hpp"
-#include "alpha/ResourceHandle.hpp"
-#include "alpha/RequestResult.hpp"
+#include "YD/Exception.hpp"
+#include "YD/Client.hpp"
+#include "YD/ResourceHandle.hpp"
+#include "YD/RequestResult.hpp"
 
 #include "ClientImpl.hpp"
 #include "ResourceHandleImpl.hpp"
@@ -15,7 +15,7 @@
 
 namespace tl = thallium;
 
-namespace alpha {
+namespace YD {
 
 Client::Client() = default;
 

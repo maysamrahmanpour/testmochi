@@ -1,11 +1,11 @@
 {
     "libraries": {
-        "alpha": "libalpha-bedrock-module.so"
+        "YD": "libYD-bedrock-module.so"
     },
     "providers": [
         {
-            "type": "alpha",
-            "name": "my-alpha-provider",
+            "type": "YD",
+            "name": "my-YD-provider",
             "provider_id": 42,
             "config": {
                 "resources": [

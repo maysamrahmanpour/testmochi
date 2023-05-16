@@ -3,13 +3,13 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_PROVIDER_HPP
-#define __ALPHA_PROVIDER_HPP
+#ifndef __YD_PROVIDER_HPP
+#define __YD_PROVIDER_HPP
 
 #include <thallium.hpp>
 #include <memory>
 
-namespace alpha {
+namespace YD {
 
 namespace tl = thallium;
 

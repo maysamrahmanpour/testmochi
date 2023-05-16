@@ -3,10 +3,10 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_BACKEND_HPP
-#define __ALPHA_BACKEND_HPP
+#ifndef __YD_BACKEND_HPP
+#define __YD_BACKEND_HPP
 
-#include <alpha/RequestResult.hpp>
+#include <YD/RequestResult.hpp>
 #include <unordered_set>
 #include <unordered_map>
 #include <functional>
@@ -17,14 +17,14 @@
  * @brief Helper class to register backend types into the backend factory.
  */
 template<typename BackendType>
-class __AlphaBackendRegistration;
+class __YdBackendRegistration;
 
-namespace alpha {
+namespace YD {
 
 /**
  * @brief Interface for resource backends. To build a new backend,
  * implement a class MyBackend that inherits from Backend, and put
- * ALPHA_REGISTER_BACKEND(mybackend, MyBackend); in a cpp file
+ * YD_REGISTER_BACKEND(mybackend, MyBackend); in a cpp file
  * that includes your backend class' header file.
  *
  * Your backend class should also have two static functions to
@@ -36,7 +36,7 @@ namespace alpha {
 class Backend {
 
     template<typename BackendType>
-    friend class ::__AlphaBackendRegistration;
+    friend class ::__YdBackendRegistration;
 
     std::string m_name;
 
@@ -116,7 +116,7 @@ class Backend {
 class ResourceFactory {
 
     template<typename BackendType>
-    friend class ::__AlphaBackendRegistration;
+    friend class ::__YdBackendRegistration;
 
     using json = nlohmann::json;
 
@@ -160,27 +160,27 @@ class ResourceFactory {
                 std::function<std::unique_ptr<Backend>(const thallium::engine&, const json&)>> open_fn;
 };
 
-} // namespace alpha
+} // namespace YD
 
 
-#define ALPHA_REGISTER_BACKEND(__backend_name, __backend_type) \
-    static __AlphaBackendRegistration<__backend_type> __alpha ## __backend_name ## _backend( #__backend_name )
+#define YD_REGISTER_BACKEND(__backend_name, __backend_type) \
+    static __YdBackendRegistration<__backend_type> __YD ## __backend_name ## _backend( #__backend_name )
 
 template<typename BackendType>
-class __AlphaBackendRegistration {
+class __YdBackendRegistration {
 
     using json = nlohmann::json;
 
     public:
 
-    __AlphaBackendRegistration(const std::string& backend_name)
+    __YdBackendRegistration(const std::string& backend_name)
     {
-        alpha::ResourceFactory::create_fn[backend_name] = [backend_name](const thallium::engine& engine, const json& config) {
+        YD::ResourceFactory::create_fn[backend_name] = [backend_name](const thallium::engine& engine, const json& config) {
             auto p = BackendType::create(engine, config);
             p->m_name = backend_name;
             return p;
         };
-        alpha::ResourceFactory::open_fn[backend_name] = [backend_name](const thallium::engine& engine, const json& config) {
+        YD::ResourceFactory::open_fn[backend_name] = [backend_name](const thallium::engine& engine, const json& config) {
             auto p = BackendType::open(engine, config);
             p->m_name = backend_name;
             return p;

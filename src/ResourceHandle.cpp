@@ -3,9 +3,9 @@
  * 
  * See COPYRIGHT in top-level directory.
  */
-#include "alpha/ResourceHandle.hpp"
-#include "alpha/RequestResult.hpp"
-#include "alpha/Exception.hpp"
+#include "YD/ResourceHandle.hpp"
+#include "YD/RequestResult.hpp"
+#include "YD/Exception.hpp"
 
 #include "AsyncRequestImpl.hpp"
 #include "ClientImpl.hpp"
@@ -14,7 +14,7 @@
 #include <thallium/serialization/stl/string.hpp>
 #include <thallium/serialization/stl/pair.hpp>
 
-namespace alpha {
+namespace YD {
 
 ResourceHandle::ResourceHandle() = default;
 
@@ -40,7 +40,7 @@ Client ResourceHandle::client() const {
 }
 
 void ResourceHandle::sayHello() const {
-    if(not self) throw Exception("Invalid alpha::ResourceHandle object");
+    if(not self) throw Exception("Invalid YD::ResourceHandle object");
     auto& rpc = self->m_client->m_say_hello;
     auto& ph  = self->m_ph;
     auto& resource_id = self->m_resource_id;
@@ -52,7 +52,7 @@ void ResourceHandle::computeSum(
         int32_t* result,
         AsyncRequest* req) const
 {
-    if(not self) throw Exception("Invalid alpha::ResourceHandle object");
+    if(not self) throw Exception("Invalid YD::ResourceHandle object");
     auto& rpc = self->m_client->m_compute_sum;
     auto& ph  = self->m_ph;
     auto& resource_id = self->m_resource_id;

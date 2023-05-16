@@ -3,22 +3,22 @@
  *
  * See COPYRIGHT in top-level directory.
  */
-#ifndef __ALPHA_CLIENT_HPP
-#define __ALPHA_CLIENT_HPP
+#ifndef __YD_CLIENT_HPP
+#define __YD_CLIENT_HPP
 
-#include <alpha/ResourceHandle.hpp>
-#include <alpha/UUID.hpp>
+#include <YD/ResourceHandle.hpp>
+#include <YD/UUID.hpp>
 #include <thallium.hpp>
 #include <memory>
 
-namespace alpha {
+namespace YD {
 
 class ClientImpl;
 class ResourceHandle;
 
 /**
  * @brief The Client object is the main object used to establish
- * a connection with a Alpha service.
+ * a connection with a Yd service.
  */
 class Client {
 
